@@ -13,11 +13,11 @@ public class LoginTest {
         //Maximize window
         driver.manage().window().maximize();
         //Enter username
-        driver.findElement(By.xpath("//input[@id='username']")).sendKeys("tomsmith");
+        driver.findElement(By.id("username")).sendKeys("tomsmith");
         //Enter password
-        driver.findElement(By.xpath("//input[@id='password']")).sendKeys("SuperSecretPassword!");
+        driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
         //click login
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        driver.findElement(By.cssSelector("button[type='submit']")).click();
         //Wait
         Thread.sleep(2000);
         //verify login success
