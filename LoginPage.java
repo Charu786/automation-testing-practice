@@ -8,18 +8,19 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.WaitUtils;
 
 import java.time.Duration;
 
 public class LoginPage {
 
     WebDriver driver;
-    WebDriverWait wait;
+    WaitUtils wait;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WaitUtils(driver);
     }
     //Locators using PageFactory
     @FindBy(id = "username")
@@ -40,7 +41,7 @@ public class LoginPage {
         loginBtn.click();
     }
     public String getMessage() {
-        wait.until(ExpectedConditions.visibilityOf(message));
+        wait.waitForElement(message);
         return message.getText();
     }
 }
